@@ -1,65 +1,630 @@
-<section id="documents">
-  <h2>6. الوثائق المرتبطة بالمشروع</h2>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="التوثيق الرسمي للنموذج التصوري لمنظومة بنك المعلومات البيئية - المرصد البيئي">
+  <title>المرصد البيئي | بنك المعلومات البيئية</title>
 
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #07546b;
+      --secondary: #087fa3;
+      --accent: #12a6b8;
+      --bg: #f2f6f8;
+      --text: #243b4a;
+      --muted: #647987;
+      --border: #e0e9ed;
+      --white: #fff;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: 'Tajawal', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.95;
+    }
+
+    a { color: var(--secondary); }
+
+    .hero {
+      background: linear-gradient(135deg, #063e55, #087e99);
+      color: white;
+      padding: 65px 20px 55px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      border: 1px solid #ffffff20;
+      border-radius: 50%;
+      top: -160px;
+      left: -60px;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 5px 15px;
+      border: 1px solid #ffffff55;
+      border-radius: 30px;
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+
+    .hero h1 {
+      font-size: clamp(28px, 5vw, 44px);
+      line-height: 1.4;
+      margin: 0 0 12px;
+      font-weight: 800;
+    }
+
+    .hero p {
+      max-width: 700px;
+      margin: auto;
+      color: #e1f2f7;
+      font-size: 18px;
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      padding: 11px 24px;
+      border-radius: 9px;
+      font-weight: 700;
+      transition: .2s;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .btn-light {
+      background: white;
+      color: var(--primary);
+    }
+
+    .btn-outline {
+      border: 1px solid #ffffff88;
+      color: white;
+    }
+
+    .container {
+      width: min(100% - 32px, 1000px);
+      margin: 35px auto;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 230px minmax(0, 1fr);
+      gap: 22px;
+      align-items: start;
+    }
+
+    .sidebar {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      padding: 18px;
+      position: sticky;
+      top: 20px;
+    }
+
+    .sidebar strong {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--primary);
+    }
+
+    .sidebar a {
+      display: block;
+      text-decoration: none;
+      color: var(--muted);
+      padding: 5px 0;
+      font-size: 14px;
+    }
+
+    .sidebar a:hover { color: var(--secondary); }
+
+    .content { min-width: 0; }
+
+    section {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      padding: 26px;
+      margin-bottom: 20px;
+      scroll-margin-top: 20px;
+    }
+
+    h2 {
+      color: var(--primary);
+      font-size: 24px;
+      margin: 0 0 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    h3 {
+      color: var(--secondary);
+      font-size: 18px;
+      margin: 18px 0 5px;
+    }
+
+    p { margin: 8px 0 14px; }
+
+    ul, ol { padding-right: 22px; }
+
+    li { margin-bottom: 7px; }
+
+    .intro {
+      font-size: 17px;
+      color: #385365;
+    }
+
+    .notice {
+      background: #fff8e8;
+      border-right: 4px solid #e5a52c;
+      border-radius: 8px;
+      padding: 15px 18px;
+      margin-top: 15px;
+    }
+
+    .notice strong { color: #8b5b09; }
+
+    .layers {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .layer {
+      background: #f5fafc;
+      border: 1px solid #dfedf2;
+      border-radius: 10px;
+      padding: 15px;
+    }
+
+    .layer:last-child { grid-column: 1 / -1; }
+
+    .layer-number {
+      color: var(--accent);
+      font-weight: 800;
+      font-size: 13px;
+    }
+
+    .layer h3 { margin: 3px 0 5px; }
+
+    .layer p {
+      font-size: 14px;
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .tech-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .tech {
+      background: #eaf5f8;
+      color: #075b75;
+      border-radius: 6px;
+      padding: 5px 12px;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .doc-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .doc-list li {
+      padding: 12px 14px;
+      background: #f6f9fa;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 9px;
+    }
+
+    .doc-list li::before {
+      content: "↗";
+      color: var(--accent);
+      font-weight: 800;
+      margin-left: 8px;
+    }
+
+    .doc-list a {
+      display: inline-block;
+      margin-top: 6px;
+      font-weight: 700;
+      text-decoration: none;
+      border-bottom: 1px dashed var(--secondary);
+    }
+
+    .doc-list a:hover {
+      color: var(--primary);
+      border-bottom-style: solid;
+    }
+
+    .meta {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .cta {
+      background: linear-gradient(135deg, #07546b, #087e99);
+      color: white;
+      text-align: center;
+      border: 0;
+    }
+
+    .cta h2 { color: white; border-color: #ffffff40; }
+
+    .cta p { color: #e1f2f7; }
+
+    footer {
+      text-align: center;
+      padding: 25px 15px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 720px) {
+      .layout { grid-template-columns: 1fr; }
+      .sidebar { position: static; }
+      .sidebar nav {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 4px 12px;
+      }
+      .layers { grid-template-columns: 1fr; }
+      .layer:last-child { grid-column: auto; }
+      section { padding: 20px; }
+      .hero { padding: 45px 18px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="hero">
+  <span class="tag">نموذج تصوّري · Concept Prototype</span>
+  <h1>المرصد البيئي</h1>
   <p>
-    يشكّل هذا البروتوتايب جزءاً من حزمة توثيق
-    أوسع تتناول واقع البيانات البيئية
-    ومتطلبات تطوير قاعدة البيانات، وتشمل:
+    بنك المعلومات البيئية<br>
+    تصور أولي لمنظومة رقمية متكاملة لجمع البيانات البيئية
+    وإدارتها وتحليلها وعرضها.
   </p>
 
-  <ul class="doc-list">
-    <li>
-      <strong>مصفوفة الربط</strong><br>
-      <span class="meta">
-        الربط بين الاستمارات الحالية وقاعدة
-        البيانات البيئية السابقة.
-      </span>
-      <br>
-      <a href="docs/01-forms-database-mapping.xlsx" download>
-        تنزيل مصفوفة ربط الاستمارات بقاعدة البيانات
-      </a>
-    </li>
+  <div class="hero-actions">
+    <a class="btn btn-light" href="prototype.html">
+      استعراض البروتوتايب التفاعلي ←
+    </a>
+    <a class="btn btn-outline" href="#about">
+      التعرّف على المشروع
+    </a>
+  </div>
+</header>
 
-    <li>
-      <strong>قاموس البيانات</strong><br>
-      <span class="meta">
-        توثيق تفصيلي للحقول المتطابقة
-        بين مصادر البيانات.
-      </span>
-      <br>
-      <a href="docs/02-environmental-data-dictionary.xlsx" download>
-        تنزيل قاموس البيانات
-      </a>
-    </li>
+<div class="container">
+  <div class="layout">
 
-    <li>
-      <strong>دليل البيانات الأولي</strong><br>
-      <span class="meta">
-        المجالات البيئية الجديدة كلياً
-        التي تتطلب إدراجها ضمن قاعدة البيانات.
-      </span>
-      <br>
-      <a href="docs/03-new-environmental-data-fields.pdf" download>
-        تنزيل دليل البيانات الجديدة
-      </a>
-    </li>
+    <aside class="sidebar">
+      <strong>محتويات التوثيق</strong>
+      <nav>
+        <a href="#about">عن المشروع</a>
+        <a href="#layers">طبقات المنظومة</a>
+        <a href="#purpose">الهدف من النموذج</a>
+        <a href="#limitations">حدود النموذج</a>
+        <a href="#technology">التقنيات المستخدمة</a>
+        <a href="#documents">الوثائق المرتبطة</a>
+        <a href="#ownership">الجهة المعدّة</a>
+      </nav>
+    </aside>
 
-    <li>
-      <strong>مذكرة التوصية الفنية</strong><br>
-      <span class="meta">
-        توصيات أولية لتطوير قاعدة البيانات
-        البيئية.
-      </span>
-      <br>
-      <a href="docs/04-database-development-recommendation.pdf" download>
-        تنزيل مذكرة التوصية الفنية
-      </a>
-    </li>
-  </ul>
+    <main class="content">
 
-  <p class="meta">
-    ملاحظة: الوثائق المذكورة جزء من حزمة العمل
-    الأوسع، وليست مرفقات متاحة ضمن هذا المستودع
-    بالضرورة.
-  </p>
-</section>
+      <section id="about">
+        <h2>1. عن المشروع</h2>
+
+        <p class="intro">
+          يحاكي هذا النموذج خمس طبقات مقترحة لواجهات منظومة
+          بنك المعلومات البيئية، ويهدف إلى تقديم تصور بصري
+          وتفاعلي أولي لآليات جمع البيانات البيئية وإدارتها
+          وتحليلها وإتاحتها للجهات المعنية والمواطنين.
+        </p>
+
+        <p>
+          يندرج البروتوتايب ضمن أعمال دراسة واقع البيانات
+          البيئية وقواعد البيانات الحالية، واستكشاف فرص
+          تطوير منظومة رقمية أكثر تكاملاً لدعم إدارة
+          المعلومات البيئية.
+        </p>
+
+        <div class="notice">
+          <strong>⚠️ ملاحظة مهمة</strong>
+          <p>
+            هذا بروتوتايب مفهومي (Concept Prototype) لغرض
+            العرض والنقاش فقط، وليس نظاماً إنتاجياً جاهزاً
+            للاستخدام الفعلي.
+          </p>
+        </div>
+      </section>
+
+      <section id="layers">
+        <h2>2. طبقات المنظومة المقترحة</h2>
+
+        <p>
+          يتضمن النموذج خمس طبقات رئيسية، تمثل وظائف
+          مقترحة ضمن منظومة بنك المعلومات البيئية:
+        </p>
+
+        <div class="layers">
+
+          <div class="layer">
+            <span class="layer-number">الطبقة 01</span>
+            <h3>الإدخال الميداني</h3>
+            <p>
+              عرض الاستمارات الرقمية الحالية عبر KoboToolbox،
+              مبوّبة حسب المديرية، بما يدعم تصور آلية جمع
+              البيانات البيئية من مصادرها.
+            </p>
+          </div>
+
+          <div class="layer">
+            <span class="layer-number">الطبقة 02</span>
+            <h3>إدارة البيانات</h3>
+            <p>
+              واجهة مقترحة لإدارة السجلات البيئية بأسلوب
+              ويب، كتصور بديل عن الاعتماد على أدوات مكتبية
+              معقدة في إدارة البيانات.
+            </p>
+          </div>
+
+          <div class="layer">
+            <span class="layer-number">الطبقة 03</span>
+            <h3>لوحة القيادة GIS</h3>
+            <p>
+              خريطة تخطيطية تفاعلية لمحافظات سوريا، تعرض
+              حالة استثمار كل محافظة: نشط، محدود،
+              أو غير مستثمَر.
+            </p>
+          </div>
+
+          <div class="layer">
+            <span class="layer-number">الطبقة 04</span>
+            <h3>تطبيق المواطن</h3>
+            <p>
+              نموذج مبسّط لواجهة عامة تتيح للمواطن
+              الاطلاع على معلومات حالة جودة الهواء.
+            </p>
+          </div>
+
+          <div class="layer">
+            <span class="layer-number">الطبقة 05</span>
+            <h3>الإنذار المبكر</h3>
+            <p>
+              تصور لواجهة تغذية إشعارات بمستويات خطورة
+              مختلفة، بهدف توضيح آلية عرض التنبيهات
+              البيئية المحتملة.
+            </p>
+          </div>
+
+        </div>
+      </section>
+
+      <section id="purpose">
+        <h2>3. الهدف من النموذج</h2>
+
+        <p>
+          يهدف البروتوتايب إلى تسهيل عرض ومناقشة تصور
+          أولي لمنظومة بنك المعلومات البيئية، وإظهار
+          مجموعة من الواجهات والوظائف التي يمكن دراستها
+          ضمن مراحل التطوير اللاحقة.
+        </p>
+
+        <ul>
+          <li>توضيح التصور المقترح لواجهات المنظومة.</li>
+          <li>عرض مجالات جمع البيانات وإدارتها وتحليلها.</li>
+          <li>تسهيل النقاش الفني حول تطوير قاعدة البيانات.</li>
+          <li>دعم دراسة فرص التكامل بين البيانات والواجهات.</li>
+        </ul>
+      </section>
+
+      <section id="limitations">
+        <h2>4. حدود النموذج وملاحظات البيانات</h2>
+
+        <p>
+          يجب قراءة المخرجات المعروضة ضمن حدود النموذج
+          التصوّري، وعدم التعامل معها باعتبارها بيانات
+          تشغيلية أو نتائج رصد آنية.
+        </p>
+
+        <ul>
+          <li>
+            الأرقام والإحصاءات المعروضة افتراضية بالكامل،
+            ولا يوجد اتصال بقاعدة بيانات حقيقية.
+          </li>
+          <li>
+            حالات المحافظات بالخريطة (نشط / محدود /
+            غير مستثمَر) موثّقة استناداً إلى تقرير
+            وضع المرصد البيئي.
+          </li>
+          <li>
+            لا يحتوي النموذج على نظام صلاحيات
+            أو مصادقة مستخدمين.
+          </li>
+          <li>
+            الواجهات المعروضة توضيحية، ولا تمثل
+            نظاماً إنتاجياً معتمداً.
+          </li>
+        </ul>
+
+        <div class="notice">
+          <strong>تنويه بشأن الاستخدام</strong>
+          <p>
+            لا يُستخدم النموذج لاتخاذ قرارات تشغيلية
+            أو إصدار أحكام فعلية حول الحالة البيئية،
+            إذ يتطلب ذلك بيانات معتمدة وتكاملاً
+            تقنياً مع مصادر البيانات المختصة.
+          </p>
+        </div>
+      </section>
+
+      <section id="technology">
+        <h2>5. التقنيات المستخدمة</h2>
+
+        <p>
+          تم بناء البروتوتايب كملف HTML مستقل، دون
+          الاعتماد على إطار عمل برمجي.
+        </p>
+
+        <div class="tech-list">
+          <span class="tech">HTML</span>
+          <span class="tech">CSS</span>
+          <span class="tech">JavaScript</span>
+          <span class="tech">Chart.js</span>
+          <span class="tech">SVG Map</span>
+        </div>
+
+        <ul>
+          <li>
+            Chart.js لعرض الرسوم البيانية.
+          </li>
+          <li>
+            خريطة SVG تخطيطية مرسومة يدوياً،
+            دون اعتماد على خرائط خارجية.
+          </li>
+          <li>
+            خط Tajawal من Google Fonts.
+          </li>
+          <li>
+            لا يتطلب النموذج خادماً خلفياً (Backend)
+            لتشغيل الواجهة التجريبية.
+          </li>
+        </ul>
+      </section>
+
+      <section id="documents">
+        <h2>6. الوثائق المرتبطة بالمشروع</h2>
+
+        <p>
+          يشكّل هذا البروتوتايب جزءاً من حزمة توثيق
+          أوسع تتناول واقع البيانات البيئية
+          ومتطلبات تطوير قاعدة البيانات، وتشمل:
+        </p>
+
+        <ul class="doc-list">
+          <li>
+            <strong>مصفوفة الربط</strong><br>
+            <span class="meta">
+              الربط بين الاستمارات الحالية وقاعدة
+              البيانات البيئية السابقة.
+            </span>
+            <br>
+            <a href="docs/01-forms-database-mapping.xlsx" download>
+              تنزيل مصفوفة ربط الاستمارات بقاعدة البيانات
+            </a>
+          </li>
+
+          <li>
+            <strong>قاموس البيانات</strong><br>
+            <span class="meta">
+              توثيق تفصيلي للحقول المتطابقة
+              بين مصادر البيانات.
+            </span>
+            <br>
+            <a href="docs/02-environmental-data-dictionary.xlsx" download>
+              تنزيل قاموس البيانات
+            </a>
+          </li>
+
+          <li>
+            <strong>دليل البيانات الأولي</strong><br>
+            <span class="meta">
+              المجالات البيئية الجديدة كلياً
+              التي تتطلب إدراجها ضمن قاعدة البيانات.
+            </span>
+            <br>
+            <a href="docs/03-new-environmental-data-fields.pdf" download>
+              تنزيل دليل البيانات الجديدة
+            </a>
+          </li>
+
+          <li>
+            <strong>مذكرة التوصية الفنية</strong><br>
+            <span class="meta">
+              توصيات أولية لتطوير قاعدة البيانات
+              البيئية.
+            </span>
+            <br>
+            <a href="docs/04-database-development-recommendation.pdf" download>
+              تنزيل مذكرة التوصية الفنية
+            </a>
+          </li>
+        </ul>
+
+        <p class="meta">
+          ملاحظة: الوثائق متاحة للتنزيل ضمن مجلد
+          <code>docs</code> المرفق مع الموقع.
+        </p>
+      </section>
+
+      <section id="ownership">
+        <h2>7. الجهة المعدّة</h2>
+
+        <p>
+          <strong>قسم المرصد البيئي</strong><br>
+          مسؤول بنك المعلومات البيئية وقواعد البيانات
+        </p>
+
+        <p class="meta">
+          نموذج أولي للعرض والنقاش الفني.
+        </p>
+      </section>
+
+      <section class="cta">
+        <h2>استكشف النموذج التفاعلي</h2>
+        <p>
+          انتقل إلى البروتوتايب لاستعراض الواجهات
+          المقترحة لطبقات منظومة بنك المعلومات البيئية.
+        </p>
+        <a class="btn btn-light" href="prototype.html">
+          فتح البروتوتايب ←
+        </a>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<footer>
+  المرصد البيئي · بنك المعلومات البيئية وقواعد البيانات
+  <br>
+  نموذج تصوّري لأغراض العرض والنقاش
+</footer>
+
+</body>
+</html>
