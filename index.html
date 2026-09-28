@@ -3,628 +3,223 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="التوثيق الرسمي للنموذج التصوري لمنظومة بنك المعلومات البيئية - المرصد البيئي">
-  <title>المرصد البيئي | بنك المعلومات البيئية</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
+  <meta name="description" content="المرصد البيئي الوطني — تحليل المنظومة القديمة (NEO) وبياناتها والتوصية بمسار تطوير بنك المعلومات البيئية">
+  <title>المرصد البيئي الوطني | تحليل المنظومة القديمة والتوصية</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --primary: #07546b;
-      --secondary: #087fa3;
-      --accent: #12a6b8;
-      --bg: #f2f6f8;
-      --text: #243b4a;
-      --muted: #647987;
-      --border: #e0e9ed;
-      --white: #fff;
+    :root{
+      --primary:#054239; --primary-2:#0B5446; --gold:#988561; --gold-2:#B9A779; --umber:#6B1F2A;
+      --bg:#F7F5F0; --paper:#FFFFFF; --text:#161616; --muted:#6F6A5D; --border:#E2DDCD;
+      --ok-bg:#E3EEEA; --warn-bg:#F3EEE1; --bad:#B1302F; --bad-bg:#F6E4E2;
     }
-
-    * { box-sizing: border-box; }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      margin: 0;
-      font-family: 'Tajawal', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.95;
+    @media (prefers-color-scheme: dark){
+      :root:not([data-theme="light"]){ color-scheme:dark; --primary:#8FCFC1; --bg:#141311; --paper:#1D1C19; --text:#FAF9F6; --muted:#A39E8C; --border:#34312A; --ok-bg:#1F332D; --warn-bg:#35301F; --bad:#D0605E; --bad-bg:#3B2320; --umber:#C06E7E; }
     }
-
-    a { color: var(--secondary); }
-
-    .hero {
-      background: linear-gradient(135deg, #063e55, #087e99);
-      color: white;
-      padding: 65px 20px 55px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      width: 300px;
-      height: 300px;
-      border: 1px solid #ffffff20;
-      border-radius: 50%;
-      top: -160px;
-      left: -60px;
-    }
-
-    .tag {
-      display: inline-block;
-      padding: 5px 15px;
-      border: 1px solid #ffffff55;
-      border-radius: 30px;
-      font-size: 14px;
-      margin-bottom: 15px;
-    }
-
-    .hero h1 {
-      font-size: clamp(28px, 5vw, 44px);
-      line-height: 1.4;
-      margin: 0 0 12px;
-      font-weight: 800;
-    }
-
-    .hero p {
-      max-width: 700px;
-      margin: auto;
-      color: #e1f2f7;
-      font-size: 18px;
-    }
-
-    .hero-actions {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 28px;
-    }
-
-    .btn {
-      display: inline-block;
-      text-decoration: none;
-      padding: 11px 24px;
-      border-radius: 9px;
-      font-weight: 700;
-      transition: .2s;
-    }
-
-    .btn:hover { transform: translateY(-2px); }
-
-    .btn-light {
-      background: white;
-      color: var(--primary);
-    }
-
-    .btn-outline {
-      border: 1px solid #ffffff88;
-      color: white;
-    }
-
-    .container {
-      width: min(100% - 32px, 1000px);
-      margin: 35px auto;
-    }
-
-    .layout {
-      display: grid;
-      grid-template-columns: 230px minmax(0, 1fr);
-      gap: 22px;
-      align-items: start;
-    }
-
-    .sidebar {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 13px;
-      padding: 18px;
-      position: sticky;
-      top: 20px;
-    }
-
-    .sidebar strong {
-      display: block;
-      margin-bottom: 10px;
-      color: var(--primary);
-    }
-
-    .sidebar a {
-      display: block;
-      text-decoration: none;
-      color: var(--muted);
-      padding: 5px 0;
-      font-size: 14px;
-    }
-
-    .sidebar a:hover { color: var(--secondary); }
-
-    .content { min-width: 0; }
-
-    section {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 13px;
-      padding: 26px;
-      margin-bottom: 20px;
-      scroll-margin-top: 20px;
-    }
-
-    h2 {
-      color: var(--primary);
-      font-size: 24px;
-      margin: 0 0 14px;
-      padding-bottom: 10px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    h3 {
-      color: var(--secondary);
-      font-size: 18px;
-      margin: 18px 0 5px;
-    }
-
-    p { margin: 8px 0 14px; }
-
-    ul, ol { padding-right: 22px; }
-
-    li { margin-bottom: 7px; }
-
-    .intro {
-      font-size: 17px;
-      color: #385365;
-    }
-
-    .notice {
-      background: #fff8e8;
-      border-right: 4px solid #e5a52c;
-      border-radius: 8px;
-      padding: 15px 18px;
-      margin-top: 15px;
-    }
-
-    .notice strong { color: #8b5b09; }
-
-    .layers {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
-      margin-top: 18px;
-    }
-
-    .layer {
-      background: #f5fafc;
-      border: 1px solid #dfedf2;
-      border-radius: 10px;
-      padding: 15px;
-    }
-
-    .layer:last-child { grid-column: 1 / -1; }
-
-    .layer-number {
-      color: var(--accent);
-      font-weight: 800;
-      font-size: 13px;
-    }
-
-    .layer h3 { margin: 3px 0 5px; }
-
-    .layer p {
-      font-size: 14px;
-      margin: 0;
-      color: var(--muted);
-    }
-
-    .tech-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 12px;
-    }
-
-    .tech {
-      background: #eaf5f8;
-      color: #075b75;
-      border-radius: 6px;
-      padding: 5px 12px;
-      font-size: 14px;
-      font-weight: 700;
-    }
-
-    .doc-list {
-      list-style: none;
-      padding: 0;
-    }
-
-    .doc-list li {
-      padding: 12px 14px;
-      background: #f6f9fa;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      margin-bottom: 9px;
-    }
-
-    .doc-list li::before {
-      content: "↗";
-      color: var(--accent);
-      font-weight: 800;
-      margin-left: 8px;
-    }
-
-    .doc-list a {
-      display: inline-block;
-      margin-top: 6px;
-      font-weight: 700;
-      text-decoration: none;
-      border-bottom: 1px dashed var(--secondary);
-    }
-
-    .doc-list a:hover {
-      color: var(--primary);
-      border-bottom-style: solid;
-    }
-
-    .meta {
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .cta {
-      background: linear-gradient(135deg, #07546b, #087e99);
-      color: white;
-      text-align: center;
-      border: 0;
-    }
-
-    .cta h2 { color: white; border-color: #ffffff40; }
-
-    .cta p { color: #e1f2f7; }
-
-    footer {
-      text-align: center;
-      padding: 25px 15px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    @media (max-width: 720px) {
-      .layout { grid-template-columns: 1fr; }
-      .sidebar { position: static; }
-      .sidebar nav {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 4px 12px;
-      }
-      .layers { grid-template-columns: 1fr; }
-      .layer:last-child { grid-column: auto; }
-      section { padding: 20px; }
-      .hero { padding: 45px 18px; }
+    :root[data-theme="dark"]{ color-scheme:dark; --primary:#8FCFC1; --bg:#141311; --paper:#1D1C19; --text:#FAF9F6; --muted:#A39E8C; --border:#34312A; --ok-bg:#1F332D; --warn-bg:#35301F; --bad:#D0605E; --bad-bg:#3B2320; --umber:#C06E7E; }
+    *{box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{margin:0; font-family:'Cairo',system-ui,sans-serif; background:var(--bg); color:var(--text); line-height:1.9;}
+    a{color:var(--primary);}
+    .mono{font-family:'IBM Plex Mono',ui-monospace,monospace; font-variant-numeric:tabular-nums;}
+    .hero{background:linear-gradient(135deg,#043A32,#054239 60%,#0B5446); color:#F7F5F0; padding:56px 20px 46px; text-align:center; border-bottom:4px solid var(--gold);}
+    .tag{display:inline-block; padding:4px 15px; border:1px solid var(--gold-2); color:var(--gold-2); border-radius:30px; font-size:14px; font-weight:700; margin-bottom:14px;}
+    .hero h1{font-size:clamp(28px,5vw,44px); line-height:1.4; margin:0 0 10px; font-weight:800; text-wrap:balance;}
+    .hero p{max-width:720px; margin:auto; color:#DCE6E1; font-size:17px;}
+    .hero-actions{display:flex; justify-content:center; flex-wrap:wrap; gap:12px; margin-top:26px;}
+    .btn{display:inline-block; text-decoration:none; padding:10px 22px; border-radius:9px; font-weight:700; transition:transform .2s;}
+    .btn:hover{transform:translateY(-2px);}
+    .btn:focus-visible{outline:2px solid var(--gold-2); outline-offset:3px;}
+    .btn-light{background:#F7F5F0; color:#054239;}
+    .btn-outline{border:1px solid #ffffff88; color:#fff;}
+    .container{width:min(100% - 32px, 1060px); margin:32px auto;}
+    .layout{display:grid; grid-template-columns:230px minmax(0,1fr); gap:22px; align-items:start;}
+    .sidebar{background:var(--paper); border:1px solid var(--border); border-radius:13px; padding:18px; position:sticky; top:20px;}
+    .sidebar strong{display:block; margin-bottom:8px; color:var(--primary);}
+    .sidebar a{display:block; text-decoration:none; color:var(--muted); padding:4px 0; font-size:14px;}
+    .sidebar a:hover{color:var(--primary);}
+    .content{min-width:0;}
+    section{background:var(--paper); border:1px solid var(--border); border-radius:13px; padding:24px 26px; margin-bottom:18px; scroll-margin-top:20px;}
+    h2{color:var(--primary); font-size:22px; margin:0 0 12px; padding-bottom:10px; border-bottom:1px solid var(--border);}
+    h3{color:var(--text); font-size:17px; margin:16px 0 4px;}
+    p{margin:8px 0 12px;}
+    ul{padding-inline-start:22px;} li{margin-bottom:6px;}
+    .verdict{background:linear-gradient(135deg,#043A32,#054239 60%,#0B5446); color:#F7F5F0; border:0; border-inline-start:5px solid var(--gold);}
+    .verdict h2{color:var(--gold-2); border-color:#ffffff30; font-size:16px;}
+    .verdict p{font-size:17px; margin:0;} .verdict b{color:#fff;}
+    .kpis{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:10px; margin-top:14px;}
+    .kpi{border:1px solid var(--border); border-radius:10px; padding:12px 14px; border-inline-start:4px solid var(--primary);}
+    .kpi .n{font-family:'IBM Plex Mono',monospace; font-size:26px; font-weight:600; color:var(--primary);}
+    .kpi .l{font-size:13px; color:var(--muted);}
+    table{width:100%; border-collapse:collapse; font-size:14.5px;}
+    th{text-align:right; color:var(--muted); font-size:13px; border-bottom:2px solid var(--border); padding:7px 8px;}
+    td{border-bottom:1px solid var(--border); padding:8px; vertical-align:top;}
+    .tbl{overflow-x:auto;}
+    .chip{display:inline-block; padding:1px 10px; border-radius:999px; font-size:12.5px; font-weight:800; white-space:nowrap;}
+    .ok{background:var(--ok-bg); color:var(--primary);} .mid{background:var(--warn-bg); color:#8A6421;} .bad{background:var(--bad-bg); color:var(--bad);}
+    .notice{background:var(--warn-bg); border-inline-start:4px solid var(--gold); border-radius:8px; padding:12px 16px; margin-top:14px;}
+    .notice strong{color:var(--umber);}
+    .layers{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; margin-top:12px;}
+    .layer{display:block; text-decoration:none; color:var(--text); background:var(--bg); border:1px solid var(--border); border-radius:10px; padding:12px 14px; transition:border-color .2s;}
+    .layer:hover{border-color:var(--primary);}
+    .layer.star{border-color:var(--gold); background:var(--warn-bg);}
+    .layer .num{color:var(--gold); font-weight:800; font-size:12.5px;}
+    .layer b{display:block; color:var(--primary);}
+    .layer span.d{font-size:13.5px; color:var(--muted);}
+    .doc-list{list-style:none; padding:0;}
+    .doc-list li{padding:11px 14px; background:var(--bg); border:1px solid var(--border); border-radius:8px; margin-bottom:8px;}
+    .doc-list .new{font-size:11.5px; font-weight:800; color:#241F14; background:var(--gold-2); border-radius:999px; padding:0 8px; margin-inline-start:6px;}
+    .doc-list a{font-weight:700; text-decoration:none; border-bottom:1px dashed var(--primary);}
+    .meta{color:var(--muted); font-size:14px;}
+    .cta{background:linear-gradient(135deg,#043A32,#054239); color:#F7F5F0; text-align:center; border:0;}
+    .cta h2{color:#F7F5F0; border-color:#ffffff40;} .cta p{color:#DCE6E1;}
+    footer{text-align:center; padding:22px 15px 30px; color:var(--muted); font-size:14px;}
+    @media (max-width:760px){
+      .layout{grid-template-columns:1fr;} .sidebar{position:static;}
+      .sidebar nav{display:grid; grid-template-columns:repeat(2,1fr); gap:0 12px;}
+      .layers{grid-template-columns:1fr;} .kpis{grid-template-columns:repeat(2,minmax(0,1fr));}
+      section{padding:20px;} .hero{padding:42px 18px;}
     }
   </style>
 </head>
-
 <body>
 
 <header class="hero">
-  <span class="tag">نموذج تصوّري · Concept Prototype</span>
-  <h1>المرصد البيئي</h1>
-  <p>
-    بنك المعلومات البيئية<br>
-    تصور أولي لمنظومة رقمية متكاملة لجمع البيانات البيئية
-    وإدارتها وتحليلها وعرضها.
-  </p>
-
+  <span class="tag">تحليل المنظومة القديمة والتوصية · 28/9/2026</span>
+  <h1>المرصد البيئي الوطني</h1>
+  <p>وصلت قاعدة بيانات المرصد القديمة (NEO) وبرمجيتها. جرى جردها واستعادة قاعدتها وتجربة تشغيل برمجيتها واستخراج بياناتها، وهذه النتائج وما تعنيه لمسار تطوير بنك المعلومات البيئية.</p>
   <div class="hero-actions">
-    <a class="btn btn-light" href="prototype.html">
-      استعراض البروتوتايب التفاعلي ←
-    </a>
-    <a class="btn btn-outline" href="#about">
-      التعرّف على المشروع
-    </a>
+    <a class="btn btn-light" href="prototype.html#legacy">عرض نتائج التحليل في البروتوتايب ←</a>
+    <a class="btn btn-outline" href="#verdict">قراءة الخلاصة</a>
   </div>
 </header>
 
 <div class="container">
   <div class="layout">
-
     <aside class="sidebar">
-      <strong>محتويات التوثيق</strong>
+      <strong>المحتويات</strong>
       <nav>
-        <a href="#about">عن المشروع</a>
-        <a href="#layers">طبقات المنظومة</a>
-        <a href="#purpose">الهدف من النموذج</a>
-        <a href="#limitations">حدود النموذج</a>
-        <a href="#technology">التقنيات المستخدمة</a>
-        <a href="#documents">الوثائق المرتبطة</a>
+        <a href="#verdict">الخلاصة</a>
+        <a href="#received">ما وصلنا</a>
+        <a href="#data">تحليل البيانات</a>
+        <a href="#software">تحليل البرمجية</a>
+        <a href="#recommendation">التوصية</a>
+        <a href="#prototype">البروتوتايب</a>
+        <a href="#documents">الوثائق</a>
         <a href="#ownership">الجهة المعدّة</a>
       </nav>
     </aside>
 
     <main class="content">
 
-      <section id="about">
-        <h2>1. عن المشروع</h2>
+      <section id="verdict" class="verdict">
+        <h2>الخلاصة</h2>
+        <p><b>البيانات قابلة للإنقاذ، والبرمجية غير قابلة للتشغيل.</b> استُعيدت القاعدة كاملة وسليمة واستُخرجت منها 340 منشأة جاهزة للترحيل، بينما فشلت البرمجية في تسجيل الدخول لاعتمادها على خدمة ويب مفقودة، وفيها مخاطر أمنية. هذا يؤكد التوصية المرفوعة ببناء منظومة جديدة تستفيد من القديمة مرجعاً ومصدر بيانات.</p>
+      </section>
 
-        <p class="intro">
-          يحاكي هذا النموذج خمس طبقات مقترحة لواجهات منظومة
-          بنك المعلومات البيئية، ويهدف إلى تقديم تصور بصري
-          وتفاعلي أولي لآليات جمع البيانات البيئية وإدارتها
-          وتحليلها وإتاحتها للجهات المعنية والمواطنين.
-        </p>
-
-        <p>
-          يندرج البروتوتايب ضمن أعمال دراسة واقع البيانات
-          البيئية وقواعد البيانات الحالية، واستكشاف فرص
-          تطوير منظومة رقمية أكثر تكاملاً لدعم إدارة
-          المعلومات البيئية.
-        </p>
-
-        <div class="notice">
-          <strong>⚠️ ملاحظة مهمة</strong>
-          <p>
-            هذا بروتوتايب مفهومي (Concept Prototype) لغرض
-            العرض والنقاش فقط، وليس نظاماً إنتاجياً جاهزاً
-            للاستخدام الفعلي.
-          </p>
+      <section id="received">
+        <h2>1. ما وصلنا</h2>
+        <div class="tbl"><table>
+          <thead><tr><th>المكوّن</th><th>الوصف</th></tr></thead>
+          <tbody>
+            <tr><td>قاعدة البيانات</td><td>PostgreSQL 9.3 مع PostGIS، أحدث نسخة احتياطية بتاريخ 7/1/2019، فيها 120 جدولاً.</td></tr>
+            <tr><td>البرمجية</td><td>تطبيق سطح مكتب بلغة Java (خادم وعميل وطبقات وإدارة مياه)، طوّرته الهيئة العامة للاستشعار عن بعد بين 2013 و2021.</td></tr>
+            <tr><td>البيانات المصدّرة</td><td>ثلاثة ملفات Excel بتاريخ 2026، الجزء الثاني منها ممسوحة نصوصه.</td></tr>
+            <tr><td>الطبقات الجغرافية</td><td>قاعدة تقرير حالة البيئة (ESR): 79 طبقة في 16 موضوعاً، بإسقاط UTM 37N.</td></tr>
+          </tbody>
+        </table></div>
+        <div class="kpis">
+          <div class="kpi"><div class="n">120</div><div class="l">جدولاً مستعاداً</div></div>
+          <div class="kpi"><div class="n">58</div><div class="l">منها فيها بيانات</div></div>
+          <div class="kpi"><div class="n">340</div><div class="l">منشأة قابلة للترحيل</div></div>
+          <div class="kpi"><div class="n">79</div><div class="l">طبقة GIS</div></div>
         </div>
       </section>
 
-      <section id="layers">
-        <h2>2. طبقات المنظومة المقترحة</h2>
+      <section id="data">
+        <h2>2. تحليل البيانات</h2>
+        <p>الجداول مبنية لكل الوحدات، لكن الاستخدام الفعلي اقتصر على المنشآت والتفتيش والطبقات الجغرافية.</p>
+        <ul>
+          <li><b>مجموعتان منفصلتان من المنشآت:</b> 193 منشأة في دمشق وحمص وريف دمشق وحماة، و147 منشأة في طرطوس من المشروع التجريبي.</li>
+          <li><b>النشاط الفعلي في دمشق:</b> 98 كشفاً بيئياً و88 جولة تفتيش بين 2017 و2019، انتهى 80% منها بإنذار. منشآت المحافظات الأخرى بطاقات بلا متابعة.</li>
+          <li><b>ضعف الالتزام:</b> 13% فقط من الكشوف فيها دراسة تقييم أثر بيئي، و12% وثيقة بيئية.</li>
+          <li><b>وحدات فارغة:</b> التنوع الحيوي والمحميات والاتفاقيات والتشريعات والدراسات بلا أي سجل.</li>
+          <li><b>بيانات تجريبية:</b> سجلات تفتيش طرطوس وملف «التتمة» إدخالات تجربة لا تُعتمد.</li>
+          <li><b>رصيد جغرافي:</b> أظهر التحليل المكاني على طبقات ESR 32 موقع نفايات أو صرف ضمن 500 م من مجرى مائي، و68 معصرة زيتون ضمن 300 م من مجرى مائي.</li>
+        </ul>
+      </section>
 
-        <p>
-          يتضمن النموذج خمس طبقات رئيسية، تمثل وظائف
-          مقترحة ضمن منظومة بنك المعلومات البيئية:
-        </p>
+      <section id="software">
+        <h2>3. تحليل البرمجية وتجربة تشغيلها</h2>
+        <p>استُعيدت القاعدة على بيئة اختبار (PostgreSQL 16 + PostGIS 3.4) وشُغّلت أحدث نسخة من البرمجية (NEO_2021) موصولة بها.</p>
+        <div class="tbl"><table>
+          <thead><tr><th>البند</th><th>النتيجة</th><th>التفاصيل</th></tr></thead>
+          <tbody>
+            <tr><td>استعادة القاعدة</td><td><span class="chip ok">نجحت</span></td><td>120 جدولاً و13,834 سجلاً خلال ثوانٍ، دون أخطاء مؤثرة.</td></tr>
+            <tr><td>البيانات الجغرافية</td><td><span class="chip ok">نجحت</span></td><td>137 موقع منشأة حُوّلت من UTM 37N؛ موقعان خارج طرطوس.</td></tr>
+            <tr><td>تشغيل الواجهات</td><td><span class="chip mid">جزئي</span></td><td>القوائم وبطاقة المنشأة تقرأ من القاعدة المستعادة.</td></tr>
+            <tr><td>تسجيل الدخول</td><td><span class="chip bad">فشل</span></td><td>يعتمد على خدمة ويب خارجية غير موجودة ضمن ما استُلم.</td></tr>
+            <tr><td>التوافق</td><td><span class="chip mid">مشاكل</span></td><td>مبنية لويندوز حصراً، ومشغّل الاتصال بالقاعدة من 2012.</td></tr>
+            <tr><td>الأمان</td><td><span class="chip bad">مخاطر</span></td><td>كلمة سر مكتوبة بالكود، وتجاهل شهادات الأمان، واستعلامات قابلة للحقن، ومكتبات قديمة.</td></tr>
+          </tbody>
+        </table></div>
+      </section>
 
+      <section id="recommendation">
+        <h2>4. التوصية</h2>
+        <p>تؤكد النتائج توصية المذكرة المرفوعة: <b>بناء قاعدة بيانات ومنظومة ويب جديدة</b>، مع إعادة استخدام منطق الجداول القديمة للمجالات المطابقة (32%) والجزئية (46%)، وتصميم المجالات الجديدة كلياً (22%) من الصفر.</p>
+        <ul>
+          <li>اعتماد المنظومة القديمة أرشيفاً مرجعياً فقط، وعدم إعادة تشغيلها إنتاجياً.</li>
+          <li>ترحيل الـ340 منشأة إلى القاعدة الجديدة بعد تحديثها ميدانياً عبر Kobo.</li>
+          <li>تعديل خطوة الترحيل في المذكرة السابقة: النسخ المستلمة لا تتضمن بيانات للاذقية والسويداء.</li>
+          <li>اعتماد القوائم المرجعية القديمة في الاستمارات لتوحيد التسميات.</li>
+          <li>تسليم الطبقات الجغرافية لمسؤول الخرائط لاعتمادها في لوحة القيادة.</li>
+          <li>مراسلة الهيئة العامة للاستشعار عن بعد للحصول على كود نسخة الويب اللاحقة.</li>
+        </ul>
+      </section>
+
+      <section id="prototype">
+        <h2>5. البروتوتايب</h2>
+        <p>النموذج التفاعلي يعرض نتائج التحليل، وواجهات المنظومة المقترحة معروضة على البيانات والطبقات المسترجعة فعلياً.</p>
         <div class="layers">
-
-          <div class="layer">
-            <span class="layer-number">الطبقة 01</span>
-            <h3>الإدخال الميداني</h3>
-            <p>
-              عرض الاستمارات الرقمية الحالية عبر KoboToolbox،
-              مبوّبة حسب المديرية، بما يدعم تصور آلية جمع
-              البيانات البيئية من مصادرها.
-            </p>
-          </div>
-
-          <div class="layer">
-            <span class="layer-number">الطبقة 02</span>
-            <h3>إدارة البيانات</h3>
-            <p>
-              واجهة مقترحة لإدارة السجلات البيئية بأسلوب
-              ويب، كتصور بديل عن الاعتماد على أدوات مكتبية
-              معقدة في إدارة البيانات.
-            </p>
-          </div>
-
-          <div class="layer">
-            <span class="layer-number">الطبقة 03</span>
-            <h3>لوحة القيادة GIS</h3>
-            <p>
-              خريطة تخطيطية تفاعلية لمحافظات سوريا، تعرض
-              حالة استثمار كل محافظة: نشط، محدود،
-              أو غير مستثمَر.
-            </p>
-          </div>
-
-          <div class="layer">
-            <span class="layer-number">الطبقة 04</span>
-            <h3>تطبيق المواطن</h3>
-            <p>
-              نموذج مبسّط لواجهة عامة تتيح للمواطن
-              الاطلاع على معلومات حالة جودة الهواء.
-            </p>
-          </div>
-
-          <div class="layer">
-            <span class="layer-number">الطبقة 05</span>
-            <h3>الإنذار المبكر</h3>
-            <p>
-              تصور لواجهة تغذية إشعارات بمستويات خطورة
-              مختلفة، بهدف توضيح آلية عرض التنبيهات
-              البيئية المحتملة.
-            </p>
-          </div>
-
+          <a class="layer star" href="prototype.html#legacy"><span class="num">الطبقة 07 · نتائج اليوم</span><b>تحليل المنظومة القديمة والتوصية</b><span class="d">الخلاصة، ما وصلنا، تحليل البيانات، تجربة التشغيل مع صور الشاشات.</span></a>
+          <a class="layer" href="prototype.html#ind"><span class="num">الطبقة 08</span><b>لوحة المؤشرات</b><span class="d">مؤشرات كل استمارة على خرائط المحافظات الفعلية، مع ما توفر من بيانات حقيقية.</span></a>
+          <a class="layer" href="prototype.html#dashboard"><span class="num">الطبقة 03</span><b>لوحة القيادة GIS</b><span class="d">خريطة تفاعلية بـ19 طبقة من ESR والمنظومة القديمة.</span></a>
+          <a class="layer" href="prototype.html#manage"><span class="num">الطبقة 02</span><b>سجل المنشآت</b><span class="d">340 منشأة مسترجعة مع كشوفها وجولات التفتيش عليها.</span></a>
+          <a class="layer" href="prototype.html#inspect"><span class="num">الطبقة 04</span><b>سجل التفتيش</b><span class="d">88 جولة وأكثر المخالفات تكراراً.</span></a>
+          <a class="layer" href="prototype.html#entry"><span class="num">الطبقة 01</span><b>الإدخال الميداني</b><span class="d">الاستمارات الـ72 بأسئلتها ومعاينة كل منها.</span></a>
         </div>
-      </section>
-
-      <section id="purpose">
-        <h2>3. الهدف من النموذج</h2>
-
-        <p>
-          يهدف البروتوتايب إلى تسهيل عرض ومناقشة تصور
-          أولي لمنظومة بنك المعلومات البيئية، وإظهار
-          مجموعة من الواجهات والوظائف التي يمكن دراستها
-          ضمن مراحل التطوير اللاحقة.
-        </p>
-
-        <ul>
-          <li>توضيح التصور المقترح لواجهات المنظومة.</li>
-          <li>عرض مجالات جمع البيانات وإدارتها وتحليلها.</li>
-          <li>تسهيل النقاش الفني حول تطوير قاعدة البيانات.</li>
-          <li>دعم دراسة فرص التكامل بين البيانات والواجهات.</li>
-        </ul>
-      </section>
-
-      <section id="limitations">
-        <h2>4. حدود النموذج وملاحظات البيانات</h2>
-
-        <p>
-          يجب قراءة المخرجات المعروضة ضمن حدود النموذج
-          التصوّري، وعدم التعامل معها باعتبارها بيانات
-          تشغيلية أو نتائج رصد آنية.
-        </p>
-
-        <ul>
-          <li>
-            الأرقام والإحصاءات المعروضة افتراضية بالكامل،
-            ولا يوجد اتصال بقاعدة بيانات حقيقية.
-          </li>
-          <li>
-            حالات المحافظات بالخريطة (نشط / محدود /
-            غير مستثمَر) موثّقة استناداً إلى تقرير
-            وضع المرصد البيئي.
-          </li>
-          <li>
-            لا يحتوي النموذج على نظام صلاحيات
-            أو مصادقة مستخدمين.
-          </li>
-          <li>
-            الواجهات المعروضة توضيحية، ولا تمثل
-            نظاماً إنتاجياً معتمداً.
-          </li>
-        </ul>
-
-        <div class="notice">
-          <strong>تنويه بشأن الاستخدام</strong>
-          <p>
-            لا يُستخدم النموذج لاتخاذ قرارات تشغيلية
-            أو إصدار أحكام فعلية حول الحالة البيئية،
-            إذ يتطلب ذلك بيانات معتمدة وتكاملاً
-            تقنياً مع مصادر البيانات المختصة.
-          </p>
-        </div>
-      </section>
-
-      <section id="technology">
-        <h2>5. التقنيات المستخدمة</h2>
-
-        <p>
-          تم بناء البروتوتايب كملف HTML مستقل، دون
-          الاعتماد على إطار عمل برمجي.
-        </p>
-
-        <div class="tech-list">
-          <span class="tech">HTML</span>
-          <span class="tech">CSS</span>
-          <span class="tech">JavaScript</span>
-          <span class="tech">Chart.js</span>
-          <span class="tech">SVG Map</span>
-        </div>
-
-        <ul>
-          <li>
-            Chart.js لعرض الرسوم البيانية.
-          </li>
-          <li>
-            خريطة SVG تخطيطية مرسومة يدوياً،
-            دون اعتماد على خرائط خارجية.
-          </li>
-          <li>
-            خط Tajawal من Google Fonts.
-          </li>
-          <li>
-            لا يتطلب النموذج خادماً خلفياً (Backend)
-            لتشغيل الواجهة التجريبية.
-          </li>
-        </ul>
+        <div class="notice"><strong>ملاحظة:</strong> نموذج تصوّري للعرض والنقاش. البيانات المعروضة حقيقية لكنها قديمة (2013–2019) وتحتاج تحديثاً ميدانياً، وحُذفت منها البيانات الشخصية. الأرقام المعلّمة «توضيحي» مولّدة للعرض.</div>
       </section>
 
       <section id="documents">
-        <h2>6. الوثائق المرتبطة بالمشروع</h2>
-
-        <p>
-          يشكّل هذا البروتوتايب جزءاً من حزمة توثيق
-          أوسع تتناول واقع البيانات البيئية
-          ومتطلبات تطوير قاعدة البيانات، وتشمل:
-        </p>
-
+        <h2>6. الوثائق المرتبطة</h2>
         <ul class="doc-list">
-          <li>
-            <strong>مصفوفة الربط</strong><br>
-            <span class="meta">
-              الربط بين الاستمارات الحالية وقاعدة
-              البيانات البيئية السابقة.
-            </span>
-            <br>
-            <a href="docs/01-forms-database-mapping.xlsx" download>
-              تنزيل مصفوفة ربط الاستمارات بقاعدة البيانات
-            </a>
-          </li>
-
-          <li>
-            <strong>قاموس البيانات</strong><br>
-            <span class="meta">
-              توثيق تفصيلي للحقول المتطابقة
-              بين مصادر البيانات.
-            </span>
-            <br>
-            <a href="docs/02-environmental-data-dictionary.xlsx" download>
-              تنزيل قاموس البيانات
-            </a>
-          </li>
-
-          <li>
-            <strong>دليل البيانات الأولي</strong><br>
-            <span class="meta">
-              المجالات البيئية الجديدة كلياً
-              التي تتطلب إدراجها ضمن قاعدة البيانات.
-            </span>
-            <br>
-            <a href="docs/03-new-environmental-data-fields.pdf" download>
-              تنزيل دليل البيانات الجديدة
-            </a>
-          </li>
-
-          <li>
-            <strong>مذكرة التوصية الفنية</strong><br>
-            <span class="meta">
-              توصيات أولية لتطوير قاعدة البيانات
-              البيئية.
-            </span>
-            <br>
-            <a href="docs/04-database-development-recommendation.pdf" download>
-              تنزيل مذكرة التوصية الفنية
-            </a>
-          </li>
+          <li><strong>مذكرة التوصية الفنية</strong><br><span class="meta">توصيات تطوير قاعدة البيانات البيئية.</span><br><a href="docs/04-database-development-recommendation.pdf" download>تنزيل مذكرة التوصية الفنية</a></li>
+          <li><strong>المذكرة الملحقة</strong><span class="new">جديد</span><br><span class="meta">نتائج فحص المنظومة القديمة وأثرها على التوصية.</span><br><a href="docs/07-supplementary-memo.pdf" download>تنزيل المذكرة الملحقة</a></li>
+          <li><strong>تقرير تجربة التشغيل</strong><span class="new">جديد</span><br><span class="meta">استعادة القاعدة وتشغيل البرمجية على بيئة اختبار، مع صور الشاشات.</span><br><a href="docs/06-legacy-system-test-report.pdf" download>تنزيل تقرير تجربة التشغيل</a></li>
+          <li><strong>الخلاصة</strong><span class="new">جديد</span><br><span class="meta">جرد كامل لمحتوى المنظومة القديمة وقواعدها وبرمجيتها وطبقاتها.</span><br><a href="docs/05-legacy-system-summary.pdf" download>تنزيل الخلاصة</a></li>
+          <li><strong>مصفوفة الربط</strong><br><span class="meta">الربط بين الاستمارات الحالية وقاعدة البيانات السابقة.</span><br><a href="docs/01-forms-database-mapping.xlsx" download>تنزيل مصفوفة الربط</a></li>
+          <li><strong>قاموس البيانات</strong><br><span class="meta">الحقول المتطابقة بين مصادر البيانات.</span><br><a href="docs/02-environmental-data-dictionary.xlsx" download>تنزيل قاموس البيانات</a></li>
+          <li><strong>دليل البيانات الأولي</strong><br><span class="meta">المجالات البيئية الجديدة كلياً.</span><br><a href="docs/03-new-environmental-data-fields.pdf" download>تنزيل دليل البيانات الجديدة</a></li>
         </ul>
-
-        <p class="meta">
-          ملاحظة: الوثائق متاحة للتنزيل ضمن مجلد
-          <code>docs</code> المرفق مع الموقع.
-        </p>
       </section>
 
       <section id="ownership">
         <h2>7. الجهة المعدّة</h2>
-
-        <p>
-          <strong>قسم المرصد البيئي</strong><br>
-          مسؤول بنك المعلومات البيئية وقواعد البيانات
-        </p>
-
-        <p class="meta">
-          نموذج أولي للعرض والنقاش الفني.
-        </p>
+        <p><strong>وزارة الإدارة المحلية والبيئة — قسم المرصد البيئي</strong><br>مسؤول بنك المعلومات البيئية وقواعد البيانات</p>
       </section>
 
       <section class="cta">
-        <h2>استكشف النموذج التفاعلي</h2>
-        <p>
-          انتقل إلى البروتوتايب لاستعراض الواجهات
-          المقترحة لطبقات منظومة بنك المعلومات البيئية.
-        </p>
-        <a class="btn btn-light" href="prototype.html">
-          فتح البروتوتايب ←
-        </a>
+        <h2>نتائج التحليل في البروتوتايب</h2>
+        <p>انتقل مباشرة إلى الطبقة السابعة لاستعراض نتائج تحليل المنظومة القديمة وبياناتها.</p>
+        <a class="btn btn-light" href="prototype.html#legacy">فتح الطبقة السابعة ←</a>
       </section>
 
     </main>
   </div>
 </div>
 
-<footer>
-  المرصد البيئي · بنك المعلومات البيئية وقواعد البيانات
-  <br>
-  نموذج تصوّري لأغراض العرض والنقاش
-</footer>
-
+<footer>المرصد البيئي الوطني · بنك المعلومات البيئية وقواعد البيانات<br>نموذج تصوّري لأغراض العرض والنقاش</footer>
 </body>
 </html>
